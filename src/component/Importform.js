@@ -28,7 +28,7 @@ const Importform = () => {
 
             const body = { "category_name": newCategory }
             
-            const res = await fetch("http://localhost:3001/import/category", {
+            const res = await fetch(process.env.API_URL + "/import/category", {
                 method: "POST",
                 headers: newHeader,
                 body: JSON.stringify(body)
@@ -48,7 +48,7 @@ const Importform = () => {
 
             const body = newItem;
             
-            const res = await fetch("http://localhost:3001/import/item", {
+            const res = await fetch(process.env.API_URL + "/import/item", {
                 method: "POST",
                 headers: newHeader,
                 body: JSON.stringify(body)
@@ -63,7 +63,7 @@ const Importform = () => {
 
     const getCategory = async () => {
         try {
-            const res = await fetch("http://localhost:3001/import/category");
+            const res = await fetch(process.env.API_URL + "/import/category");
             const parseRes = await res.json();
             setCategory(parseRes);
         } catch (err) {
@@ -82,7 +82,7 @@ const Importform = () => {
                 lists: importList
             };
             console.log(body);
-            const res = await fetch("http://localhost:3001/import/importitem", {
+            const res = await fetch(process.env.API_URL + "/import/importitem", {
                 method: "POST",
                 headers: newHeader,
                 body: JSON.stringify(body)
