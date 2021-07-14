@@ -120,7 +120,6 @@ const Importform = () => {
     };
 
     useEffect(() => {
-        console.log(process.env.API_URL);
         getCategory();
     }, []);
 
