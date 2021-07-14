@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import Selectitem from './Selectitem';
 import { v4 as uuidv4 } from 'uuid';
+const { REACT_APP_API_URL } = process.env;
 
 const Importform = () => {
     // state
@@ -28,7 +29,7 @@ const Importform = () => {
 
             const body = { "category_name": newCategory }
             
-            const res = await fetch(process.env.API_URL + "/import/category", {
+            const res = await fetch(REACT_APP_API_URL + "/import/category", {
                 method: "POST",
                 headers: newHeader,
                 body: JSON.stringify(body)
@@ -48,7 +49,7 @@ const Importform = () => {
 
             const body = newItem;
             
-            const res = await fetch(process.env.API_URL + "/import/item", {
+            const res = await fetch(REACT_APP_API_URL + "/import/item", {
                 method: "POST",
                 headers: newHeader,
                 body: JSON.stringify(body)
@@ -63,7 +64,7 @@ const Importform = () => {
 
     const getCategory = async () => {
         try {
-            const res = await fetch(process.env.API_URL + "/import/category");
+            const res = await fetch(REACT_APP_API_URL + "/import/category");
             const parseRes = await res.json();
             setCategory(parseRes);
         } catch (err) {
@@ -82,7 +83,7 @@ const Importform = () => {
                 lists: importList
             };
             console.log(body);
-            const res = await fetch(process.env.API_URL + "/import/importitem", {
+            const res = await fetch(REACT_APP_API_URL + "/import/importitem", {
                 method: "POST",
                 headers: newHeader,
                 body: JSON.stringify(body)
