@@ -1,4 +1,5 @@
 import { useState } from "react";
+const { REACT_APP_API_URL } = process.env;
 
 const Selectitem = ({id, category, deleteImportList, updateItem}) => {
 
@@ -7,7 +8,7 @@ const Selectitem = ({id, category, deleteImportList, updateItem}) => {
     const getItemList = async (e) => {
         try {
             const id = e.target.value
-            const res = await fetch(`http://localhost:3001/import/item/${id}`);
+            const res = await fetch(`${REACT_APP_API_URL}/import/item/${id}`);
             const parseRes = await res.json();
             setItem(parseRes);
         } catch (error) {
